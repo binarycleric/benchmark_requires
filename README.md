@@ -16,8 +16,8 @@ BenchmarkRequires.initialize!
 # now load the rest of your app
 ```
 
-As your app is loading benchmark_requires will print to STDOUT (by default) the
-file being loaded as well as the time it took to load.
+Now startup your application and keep an eye on STDOUT (don't worry, you can
+change this too).
 
 ## Using A Custom Logger
 
@@ -33,3 +33,9 @@ BenchmarkRequires.initialize!(Logger.new(STDERR))
 BenchmarkRequires.initialize!(Logger.new(nil))
 # etc, etc, etc
 ```
+
+## TODOs
+
+* More tests. 
+* Better support for custom loggers.
+* More Documentation.
