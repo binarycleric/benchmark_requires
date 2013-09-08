@@ -19,7 +19,7 @@ BenchmarkRequires.initialize!
 Now startup your application and keep an eye on STDOUT (don't worry, you can
 change this too).
 
-## Using A Custom Logger
+## Using a Custom Logger
 
 By default benchmark_requires uses `Logger` to log all requires and loads. To
 change the logger class simply pass in an instance of the logger you'd like to
