@@ -6,31 +6,42 @@ A simple to gem to benchmark your application's loads and requires.
 ## Usage
 
 To use benchmark_requires simply require and initialize the library as early in
-your application's loading process as possible.
+your application's loading process as possible. All necessary configuration will 
+be handled "just in time" when the first require/load is benchmarked.
 
 ```ruby
 require 'benchmark_requires'
-
-BenchmarkRequires.initialize!
+BenchmarkRequires.setup!
 
 # now load the rest of your app
 ```
 
-Now startup your application and keep an eye on STDOUT (don't worry, you can
+Startup your application and keep an eye on STDOUT (don't worry, you can
 change this too).
 
-## Using a Custom Logger
+## Using a Custom Logger and Log Action
 
-By default benchmark_requires uses `Logger` to log all requires and loads. To
-change the logger class simply pass in an instance of the logger you'd like to
-use. 
-
+By default benchmark_requires uses `Logger` and all logged actions will be sent
+to `:debug`. Changing these defaults is easy. 
+ 
 ```ruby
 require 'benchmark_requires'
 
-BenchmarkRequires.initialize!(Rails.logger)
-BenchmarkRequires.initialize!(Logger.new(STDERR))
-BenchmarkRequires.initialize!(Logger.new(nil))
+BenchmarkRequires.logger = Rails.logger
+BenchmarkRequires.logger = Logger.new STDERR
+BenchmarkRequires.logger = Logger.new nil
+
+BenchmarkRequires.log_action = proc do |logger, message|
+  logger.info message
+end
+
+# super basic log action.
+BenchmarkRequires.log_action = proc do |logger, message|
+  puts message
+end
+
+BenchmarkRequires.setup!
+ 
 # etc, etc, etc
 ```
 
