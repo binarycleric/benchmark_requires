@@ -24,7 +24,7 @@ module BenchmarkRequires
 
       unless self.logger
         logger = Logger.new(STDOUT)
-        logger.formatter = proc do |severity, datetime, progname, message|
+        logger.formatter = lambda do |severity, datetime, progname, message|
            "#{message}\n"
         end
         self.logger = logger

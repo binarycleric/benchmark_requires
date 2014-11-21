@@ -39,12 +39,12 @@ BenchmarkRequires.logger = Rails.logger
 BenchmarkRequires.logger = Logger.new STDERR
 BenchmarkRequires.logger = Logger.new nil
 
-BenchmarkRequires.log_action = proc do |logger, message|
+BenchmarkRequires.log_action = lambda do |logger, message|
   logger.info message
 end
 
 # super basic log action.
-BenchmarkRequires.log_action = proc do |logger, message|
+BenchmarkRequires.log_action = lambda do |logger, message|
   puts message
 end
 
