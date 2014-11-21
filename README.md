@@ -1,6 +1,8 @@
 benchmark_requires
 ==================
 
+![travis-ci-status](https://travis-ci.org/binarycleric/benchmark_requires.svg?branch=master)
+
 BenchmarkRequires is a simple gem that helps identify slow loading libraries.
 
 As applications get older and more complex the start-up time tends to increase 
