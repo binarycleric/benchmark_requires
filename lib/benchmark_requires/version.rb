@@ -1,6 +1,6 @@
 module BenchmarkRequires
 
-  VERSION = "1.0.0"
+  VERSION = "1.0.1"
 
   SUMMARY = "BenchmarkRequires is a simple gem that helps identify slow loading libraries."
 

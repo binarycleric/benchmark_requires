@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    benchmark_requires (1.0.0)
+    benchmark_requires (1.0.1)
 
 GEM
   remote: http://rubygems.org/
