@@ -2,6 +2,13 @@ module BenchmarkRequires
 
   class MessageBuilder
 
+    COLOR_WHITE = "\e[1;37m".freeze 
+    COLOR_GREEN = "\e[0;32m".freeze
+    COLOR_YELLOW = "\e[1;33m".freeze
+    COLOR_RED = "\e[1;31m".freeze
+    COLOR_OMFG_RED = "\e[0;31m".freeze
+    COLOR_RESET = "\e[0m".freeze 
+
     def initialize file_name, time
       @file_name = file_name
       @time = time.round 5
@@ -18,21 +25,21 @@ module BenchmarkRequires
     end
 
     def colorize_file_name
-      "\e[1;37m#{@file_name}\e[0m"
+      "#{COLOR_WHITE}#{@file_name}#{COLOR_RESET}"
     end
 
     def colorize_time
-      color = if @time <= 0.01 # green
-        "\e[0;32m"
-      elsif @time <= 0.25 # yellow
-        "\e[1;33m"
-      elsif @time <= 0.75 # red
-        "\e[1;31m"
-      else # OMFG RED!!!!
-        "\e[0;31m"
+      color = if @time <= 0.01
+        COLOR_GREEN 
+      elsif @time <= 0.25
+        COLOR_YELLOW
+      elsif @time <= 0.75
+        COLOR_RED
+      else 
+        COLOR_OMFG_RED
       end
  
-      color + ("%f" % @time) + "\e[0m"
+      color + ("%f" % @time) + COLOR_RESET 
     end
 
   end
