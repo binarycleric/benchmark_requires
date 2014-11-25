@@ -6,9 +6,7 @@ require "benchmark_requires/runner"
 module BenchmarkRequires
 
   class << self
-
-    attr_accessor :logger, :log_action
-    attr_accessor :setup, :runner
+    attr_accessor :logger, :log_action, :setup, :runner
 
     def benchmark file_name, &block
       setup! unless setup?
@@ -23,11 +21,11 @@ module BenchmarkRequires
       require "benchmark_requires/object_extension"
 
       unless self.logger
-        logger = Logger.new(STDOUT)
-        logger.formatter = lambda do |severity, datetime, progname, message|
-           "#{message}\n"
+        self.logger = Logger.new(STDOUT).tap do |l|
+          l.formatter = lambda do |severity, datetime, progname, message|
+             "#{message}\n"
+          end
         end
-        self.logger = logger
       end
 
       unless self.log_action
