@@ -8,7 +8,7 @@ describe BenchmarkRequires::Runner do
   end
 
   it "flushes buffer log after benchmark" do
-    BenchmarkRequires.should_receive(:log).twice
+    expect(BenchmarkRequires).to receive(:log).twice
 
     runner = described_class.new
     runner.benchmark('test.rb') do
@@ -22,7 +22,7 @@ describe BenchmarkRequires::Runner do
       # nothing.
     end
 
-    runner.send(:top_level?).should be_true
+    expect(runner.send(:top_level?)).to be_truthy
   end
 
 end

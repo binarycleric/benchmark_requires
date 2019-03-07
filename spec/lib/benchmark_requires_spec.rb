@@ -13,19 +13,19 @@ describe BenchmarkRequires do
     end
 
     it "reports as being setup" do
-      described_class.setup?.should eql true
+      expect(described_class.setup?).to be_truthy
     end
 
     it "sets up sane defaults" do
       logger = described_class.logger
 
-      logger.should be
-      logger.should respond_to :debug
+      expect(logger).to be
+      expect(logger).to respond_to :debug
 
       log_action = described_class.log_action
-      log_action.should be_a Proc
+      expect(log_action).to be_a Proc
 
-      logger.should_receive(:debug).with("test123")
+      expect(logger).to receive(:debug).with("test123")
       log_action.call(logger, "test123")
     end
 
@@ -35,8 +35,8 @@ describe BenchmarkRequires do
         logger = described_class.logger
         log_action = described_class.log_action
         message = "test123"
-        
-        logger.should_receive(:debug).with message
+
+        expect(logger).to receive(:debug).with(message)
 
         described_class.log message
       end
