@@ -4,10 +4,10 @@ require "benchmark_requires/version"
 
 Gem::Specification.new do |s|
   s.name = "benchmark_requires"
-  s.version = BenchmarkRequires::VERSION 
+  s.version = BenchmarkRequires::VERSION
   s.date = "2013-09-07"
   s.summary = BenchmarkRequires::SUMMARY
-  s.description = BenchmarkRequires::DESCRIPTION 
+  s.description = BenchmarkRequires::DESCRIPTION
   s.homepage = "http://www.github.com/binarycleric/benchmark_requires"
   s.authors = ["Jon Daniel"]
   s.email = "binarycleric@gmail.com"
@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec_junit_formatter"
 end
